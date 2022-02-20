@@ -21,16 +21,16 @@
 ## Model
 ```
 # 建立Model
-> php artisan make:model 資料表名稱
+> php artisan make:model <table名稱>
 ```
 
 ## Controller
 ```
 # 建立Controller
-> php artisan make:controller Controller名稱
+> php artisan make:controller <Controller名稱>
 
 # 建立Resource Controller
-> php artisan make:controller Controller名稱 --resource
+> php artisan make:controller <Controller名稱> --resource
 ```
 
 ## Route
@@ -43,4 +43,19 @@
 
 # 快取路由
 > php artisan route:cache
+```
+
+## Migration
+```
+# 建立Migration
+> php artisan make:migration create_<table名稱>
+
+# 執行migrate
+> php artisan migrate
+
+# migrate復原到前一個Batch的版本
+> php artisan migrate:rollback
+
+Options:
+    --step[=STEP]   復原到前N個migrate的版本(不是Batch的版本)
 ```
