@@ -21,16 +21,16 @@
 ## Model
 ```
 # 建立Model
-> php artisan make:model <Table名稱>
+> php artisan make:model <Table>
 ```
 
 ## Controller
 ```
 # 建立Controller
-> php artisan make:controller <Controller名稱>Controller
+> php artisan make:controller <Name>Controller
 
 # 建立Resource Controller
-> php artisan make:controller <Controller名稱>Controller --resource
+> php artisan make:controller <Name>Controller --resource
 ```
 
 ## Route
@@ -48,7 +48,7 @@
 ## Migration
 ```
 # 建立Migration
-> php artisan make:migration create_<table名稱>_table
+> php artisan make:migration create_<table>_table
 
 # 執行migrate
 > php artisan migrate
@@ -66,11 +66,23 @@ Options:
 ## Middleware
 ```
 # 建立middleware
-> php artisan make:middleware <Middleware名稱>
+> php artisan make:middleware <Name>
 ```
 
 ## Request
 ```
 # 建立request
-> php artisan make:request <Request名稱>
+> php artisan make:request <Name>
+```
+
+## Seeder
+```
+# 建立seeder
+> php artisan make:seeder <Name>Seeder
+
+# 執行root seeder(預設為DatabaseSeeder)
+> php artisan db:seed
+
+Options:
+    --class[=CLASS]   執行指定的seeder
 ```
