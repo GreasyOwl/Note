@@ -1,5 +1,5 @@
 # 路由
-## 常用路由方法
+## 路由方法
 ```
 Route::get($uri, $callback);
 Route::post($uri, $callback);
@@ -8,7 +8,11 @@ Route::patch($uri, $callback);
 Route::delete($uri, $callback);
 Route::options($uri, $callback);
 Route::any($uri, $callback);
+Route::match(['get', 'post'], $uri, $callback);
 Route::resource($uri, $callback);
+Route::redirect('/here', '/there', 302);
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+Route::fallback($callback);
 ```
 ## 範例
 ```
@@ -21,6 +25,19 @@ Route::get('/user', [UserController::class, 'index']);
 
 # resource
 Route::resource('user', UserController::class);
+
+# Route Parameters
+Route::get('/posts/{postId}/comments/{commentId}', function ($postId, $commentId) {
+
+});
+
+Route::get('/user/{id}', function (Request $request, $id) {
+
+});
+
+Route::get('/user/{name?}', function ($name = null) {
+
+});
 
 # group
 Route::group([
