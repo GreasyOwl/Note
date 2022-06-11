@@ -119,3 +119,117 @@ $loop->parent
     @endforeach
 @endforeach
 ```
+## 模板繼承
+```
+// layouts/master.blade.php (父blade)
+@yield('title', 'default title')
+
+@yield('content')
+
+@section('js')
+    <script src="app.js"></script>
+@show
+```
+```
+// product.blade.php (子blade)
+@extends('layouts.master')
+
+@section('title', '商品')
+
+@section('content')
+    <ul>
+        @each('list', $products, $product, 'empty-list')
+    </ul>
+
+    @include('success-button', ['text' => '儲存'])
+@endsection
+
+@section('js')
+    @parent
+
+    <script src="product.js"></script>
+@endsection
+```
+```
+// success-button.blade.php
+<button type="button">{{ $text }}</button>
+```
+```
+// list.blade.php
+<li>
+    {{ $product->name }}
+</li>
+```
+```
+// empty-list.blade.php
+<li>
+    沒有商品
+</li>
+```
+## 全域共用變數
+```
+// App\Providers\ViewServiceProvider
+public function boot()
+{
+    // 方法一
+    view()->share('posts', Post::get());
+
+    // 方法二
+    view()->composer([
+        'includes.header', 
+        'includes.footer'
+    ], function ($view) {
+        $view->with('posts', Post::get());
+    });
+
+    // 方法三
+    view()->composer('includes.*', PostComposer::class);
+}
+```
+```
+// App\Http\ViewComposers\PostComposer
+<?php
+namespace App\Http\ViewComposers;
+
+use App\Models\Post;
+use Illuminate\View\View;
+
+class PostComposer
+{
+    private $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
+    public function compose(View $view)
+    {
+        $view->with('posts', $this->post->get());
+    }
+}
+```
+## 自訂Blade指令
+```
+// App\Providers\BladeServiceProvider
+use Illuminate\Support\Facades\Blade;
+
+public function boot()
+{
+    Blade::directive('ifOdd', function ($expression) {
+        return "<?php if ($expression % 2 != 0): ?>";
+    });
+
+    Blade::directive('newlinesToBr', function ($expression) {
+        return "<?php echo nl2br({$expression}); ?>";
+    });
+}
+```
+```
+// test.blade.php
+@ifOdd (5)
+@else
+@endif
+
+@newlinesToBr($remark)
+```
