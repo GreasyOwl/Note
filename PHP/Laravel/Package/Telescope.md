@@ -1,5 +1,11 @@
 # Telescope Guide
 
+## 內容
+
+- [安裝步驟 (local)](#安裝步驟-local)
+- [額外設定](#額外設定)
+- [使用方式](#使用方式)
+
 ## 安裝步驟 (local)
 
 ### 1. composer telescope
@@ -58,7 +64,7 @@
 
 ```javascript
 📁.env.example
-修改環境設定
+新增環境設定
 
 TELESCOPE_DB_CONNECTION=telescope
 TELESCOPE_DB_HOST=127.0.0.1
@@ -75,6 +81,7 @@ TELESCOPE_DB_PASSWORD=
 ```
 
 ### 5. 移除 app 設定檔的 TelescopeServiceProvider
+
 ```diff
 📁config\app.php
 'providers' => [
@@ -127,6 +134,7 @@ public function register()
 ```
 
 ### 9. 設定排程清除資料 (非必要)
+
 ```php
 📁app\Console\Kernel.php
 設定排程頻率
@@ -150,12 +158,10 @@ Ubuntu
 * * * * * cd /var/www/html/{your-project} && php artisan schedule:run >> /dev/null 2>&1
 ```
 
-## 基本設定
+### 10. 環境設定範例
 
 ```javascript
-📁.env
-
-APP_ENV=local
+📁.env.example
 
 TELESCOPE_DB_CONNECTION=telescope
 TELESCOPE_DB_HOST=127.0.0.1
@@ -164,6 +170,7 @@ TELESCOPE_DB_DATABASE=telescope
 TELESCOPE_DB_USERNAME=root
 TELESCOPE_DB_PASSWORD=
 TELESCOPE_ENABLED=true
+TELESCOPE_PATH=telescope
 ```
 
 ## 額外設定
@@ -205,9 +212,27 @@ public function register()
 ```
 
 ## 使用方式
-```
-網址輸入 {your-domain}/telescope
 
+### 1. 設定環境
+
+```javascript
+📁.env
+
+APP_ENV=local
+
+TELESCOPE_DB_CONNECTION=telescope
+TELESCOPE_DB_HOST=127.0.0.1
+TELESCOPE_DB_PORT=3306
+TELESCOPE_DB_DATABASE=telescope
+TELESCOPE_DB_USERNAME=root
+TELESCOPE_DB_PASSWORD=
+TELESCOPE_ENABLED=true
+TELESCOPE_PATH=telescope
+```
+
+### 2. 網址輸入 {your-domain}/telescope
+
+```
 可自行變更路徑:
 📁.env
 TELESCOPE_PATH=telescope
