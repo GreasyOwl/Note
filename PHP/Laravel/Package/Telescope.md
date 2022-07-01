@@ -127,6 +127,28 @@ public function register()
 ```
 
 ### 9. 設定排程清除資料 (非必要)
+```php
+📁app\Console\Kernel.php
+設定排程頻率
+
+protected function schedule(Schedule $schedule)
+{
+    // 每日清除超過24小時的DB資料
+    $schedule->command('telescope:prune')->daily();
+
+    // or
+
+    // 每日清除超過N小時的DB資料
+    $schedule->command('telescope:prune --hours=N')->daily();
+}
+```
+
+```shell
+Ubuntu
+// 修改排程
+> crontab -e
+* * * * * cd /var/www/html/{your-project} && php artisan schedule:run >> /dev/null 2>&1
+```
 
 ## 基本設定
 
