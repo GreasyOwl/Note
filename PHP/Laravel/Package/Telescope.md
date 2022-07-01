@@ -3,16 +3,19 @@
 ## 安裝步驟 (local)
 
 ### 1. composer telescope
+
 ```shell
 > composer require laravel/telescope --dev
 ```
 
 ### 2. publish telescope's assets
+
 ```shell
 > php artisan telescope:install
 ```
 
-### 3. 使用另外的資料庫
+### 3. 使用另外的資料庫 (非必要)
+
 ```php
 📁config\database.php
 新增連線方式
@@ -46,10 +49,10 @@
 修改連線方式
 
 'storage' => [
-	'database' => [
-		'connection' => env('TELESCOPE_DB_CONNECTION', 'telescope'),
-		'chunk' => 1000,
-	],
+    'database' => [
+        'connection' => env('TELESCOPE_DB_CONNECTION', 'telescope'),
+        'chunk' => 1000,
+    ],
 ],
 ```
 
@@ -66,11 +69,13 @@ TELESCOPE_DB_PASSWORD=
 ```
 
 ### 4. migrate telescope
+
 ```shell
 > php artisan migrate
 ```
 
 ### 5. 註冊 telescope's service providers
+
 ```php
 📁app\Providers\AppServiceProvider.php
 
@@ -84,21 +89,23 @@ public function register()
 ```
 
 ### 6. 防止 telescope package 被 auto discover
+
 ```json
 📁composer.json
 
 {
-	"extra": {
-		"laravel": {
-			"dont-discover": [
-				"laravel/telescope"
-			]
-		}
-	},
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/telescope"
+            ]
+        }
+    },
 }
 ```
 
 ### 7. 升級 telescope 版本時，自動重新 publish telescope's assets
+
 ```json
 📁composer.json
 
@@ -114,6 +121,7 @@ public function register()
 ### 8. 設定排程清除資料
 
 ## 基本設定
+
 ```javascript
 📁.env
 
@@ -129,7 +137,9 @@ TELESCOPE_ENABLED=true
 ```
 
 ## 額外設定
+
 ### 自訂標籤
+
 ```php
 📁config\telescope.php
 
