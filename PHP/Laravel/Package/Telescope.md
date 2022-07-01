@@ -74,7 +74,15 @@ TELESCOPE_DB_PASSWORD=
 > php artisan migrate
 ```
 
-### 5. 註冊 telescope's service providers
+### 5. 移除 app 設定檔的 TelescopeServiceProvider
+```diff
+📁config\app.php
+'providers' => [
+-    App\Providers\TelescopeServiceProvider::class,
+],
+```
+
+### 6. 註冊 telescope's service providers
 
 ```php
 📁app\Providers\AppServiceProvider.php
@@ -88,7 +96,7 @@ public function register()
 }
 ```
 
-### 6. 防止 telescope package 被 auto discover
+### 7. 防止 telescope package 被 auto discover
 
 ```json
 📁composer.json
@@ -104,7 +112,7 @@ public function register()
 }
 ```
 
-### 7. 升級 telescope 版本時，自動重新 publish telescope's assets
+### 8. 升級 telescope 版本時，自動重新 publish telescope's assets
 
 ```json
 📁composer.json
@@ -118,7 +126,7 @@ public function register()
 }
 ```
 
-### 8. 設定排程清除資料
+### 9. 設定排程清除資料 (非必要)
 
 ## 基本設定
 
@@ -172,4 +180,13 @@ public function register()
         return $tags;
     });
 }
+```
+
+## 使用方式
+```
+網址輸入 {your-domain}/telescope
+
+可自行變更路徑:
+📁.env
+TELESCOPE_PATH=telescope
 ```
