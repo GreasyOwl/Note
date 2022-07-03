@@ -119,7 +119,7 @@ $loop->parent
     @endforeach
 @endforeach
 ```
-## 模板繼承
+# 模板繼承
 ```
 // layouts/master.blade.php (父blade)
 @yield('title', 'default title')
@@ -166,7 +166,7 @@ $loop->parent
     沒有商品
 </li>
 ```
-## 全域共用變數
+# 全域共用變數
 ```
 // App\Providers\ViewServiceProvider
 public function boot()
@@ -209,7 +209,7 @@ class PostComposer
     }
 }
 ```
-## 自訂Blade指令
+# 自訂Blade指令
 ```
 // App\Providers\BladeServiceProvider
 use Illuminate\Support\Facades\Blade;
