@@ -10,7 +10,7 @@
 ## 基本須知
 
 - 適用於 tree 結構資料表 (ex: menu、分類)
-- 使用的演算法: <a href="http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/" target="_blank">Modified Preorder Tree Traversal</a>
+- 使用的演算法: [Modified Preorder Tree Traversal](http://mikehillyer.com/articles/managing-hierarchical-data-in-mysql/)
 
 ## 需求
 
@@ -269,5 +269,5 @@ Category::rebuildSubtree($parentCategory, $treeData);
 
 ## 參考
 
-- <a href="https://github.com/lazychaser/laravel-nestedset" target="_blank">官方文件</a>
-- <a href="https://iter01.com/655063.html" target="_blank">無限級分類之 Laravel-nestedset 擴充套件包的使用</a>
+- [官方文件](https://github.com/lazychaser/laravel-nestedset)
+- [無限級分類之 Laravel-nestedset 擴充套件包的使用](https://iter01.com/655063.html)
