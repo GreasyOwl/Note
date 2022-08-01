@@ -1,6 +1,6 @@
 # Telescope Guide
 
-## 內容
+## 目錄
 
 - [安裝步驟 (local)](#安裝步驟-local)
 - [額外設定](#額外設定)
