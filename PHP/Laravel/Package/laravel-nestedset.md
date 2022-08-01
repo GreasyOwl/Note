@@ -4,6 +4,7 @@
 
 - [基本須知](#基本須知)
 - [需求](#需求)
+- [修復 lft、rgt 欄位](#修復-lftrgt-欄位)
 - [範例](#範例)
 - [參考](#參考)
 
@@ -67,6 +68,14 @@
       }
   }
   ```
+
+## 修復 lft、rgt 欄位
+
+```shell
+> php artisan tinker
+>>> Category::fixTree();
+>>> exit
+```
 
 ## 範例
 

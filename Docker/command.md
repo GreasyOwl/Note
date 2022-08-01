@@ -39,7 +39,9 @@ root@fdf163bad713:/# exit
 ### 使用 Dockerfile
 
 ```shell
-
+// Dockerfile 建立完成後，建立 image
+> docker build -t="ubuntu:php" .
+* . 代表 Dockerfile 所在的路徑
 ```
 
 ## 移除 image
